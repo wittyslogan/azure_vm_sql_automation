@@ -37,13 +37,13 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'reset ma
 		@retry_attempts=0, 
 		@retry_interval=0, 
 		@os_run_priority=0, @subsystem=N'TSQL', 
-		@command=N'declare @reset_memory int
+		@command=N'
  
 
 EXEC sp_CONFIGURE 'show advanced options',1
 RECONFIGURE
 GO
-
+declare @reset_memory int
 SELECT @reset_memory =([total_physical_memory_kb] / 1024 )*0.89
 
  
